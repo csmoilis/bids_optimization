@@ -531,23 +531,9 @@ def update_plot_post2(selected_hour):
 app.layout = html.Div(style={'fontFamily': 'sans-serif', 'padding': '40px', 'maxWidth': '1000px', 'margin': 'auto'}, children=[
     
     # Notebook Cell 1: Header
-    dcc.Markdown("# Auction Bid Optimization"),
+    dcc.Markdown("# Trding Bid Optimization"),
     
-    # Notebook Cell 2: Initial Observation
-    dcc.Markdown("As we can see in the plot, outliers are present in the data."),
-    
-    # Notebook Cell 3: First Plot
-    html.Img(src=generate_seaborn_plot(bids_long_raw, 'Price Distribution by Hour (With Outliers)'), 
-             style={'width': '100%', 'marginBottom': '30px'}),
-    
-    # Notebook Cell 4: Outlier Logic
-    dcc.Markdown("""
-    There are prices too high in the bids, so first the system should implement an anomaly or error mitigation, 
-    developing an algorithm that removes outliers. We use the following formula:
-    
-    * **Lower Bound:** Q1 - 1.5 * IQR
-    * **Upper Bound:** Q3 + 1.5 * IQR
-    """),
+
     
     # Notebook Cell 5: Second Plot (Cleaned)
     html.Img(src=generate_seaborn_plot(bids_long_clean, 'Price Distribution by Hour (Cleaned)'), 
@@ -823,4 +809,4 @@ app.layout = html.Div(style={'fontFamily': 'sans-serif', 'padding': '40px', 'max
 ])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=8081)
